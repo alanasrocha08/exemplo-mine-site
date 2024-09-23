@@ -1,0 +1,358 @@
+/* Regras CSS para site inteiro */
+
+/* Regra para TUDO
+Alterando o comportamento do Box Mode visando evitar problemas de tamanho/espaçamento para TODOS OS ELEMNETOS da página(por isso, usamos o *). */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../imagens/fundo.verde.jpg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-attachment: fixed;
+    color: white;
+
+}
+
+
+img {
+    max-width: 100%;
+}
+
+/* Regra com seletor CLASSE 
+Ao usar classes, podemos usar livrimente onde aplica-las, ou seja, em quais tags a classe será aplicada. */
+
+.container {
+    background-color: rgba(0, 0, 0, 0.925);
+    /* Bloco CENTRALIZADO */
+    width: 70%;
+    margin: auto;
+
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: white 10px 10px 30px 30px;
+}
+
+.listas {
+    background: linear-gradient(greenyellow, transparent, white);
+    padding: 4%;
+    width: 70%;
+    margin: auto;
+    border-radius: 20px;
+    border-bottom: solid white;
+    border-top: solid 20px white;
+    box-shadow: white;
+}
+
+p {
+    font-size: 18px;
+    /* O "line-height" vai controlar o espaçamento entre linhas. Usando valor fixo/absoluto.*/
+    line-height: 32px;
+    /* Usando um valor relativo/proporcional */
+    line-height: 2;
+
+    /* Ao usa  uma prpriedade duas vezes na mesma regra, sempre irá prevalecer o valor da últimas (efeito cascata). No entanto evite esta situação de repetir propriedades na mesma regra. */
+}
+
+/* quando temos o "." antes da palavra, significa que é uma classe, então, é preciso aplica-la no HTML */
+.centralizar {
+    text-align: center;
+}
+
+.destaque {
+    background-color: lightcoral;
+    padding: 3px;
+    border: solid 1px coral;
+    border-radius: 4px;
+}
+
+.destaque1 {
+    background-color: lightgoldenrodyellow;
+    padding: 3px;
+    border: solid 1px yellow;
+    border-radius: 4px;
+}
+
+figure {
+    text-align: center;
+    width: 419px;
+    margin: 0 auto;
+    /* O "margin: 0 auto" simplifica isso:
+    magin-top:0
+    margin-bottom: 0
+    magin-left: auto
+    margin-right: auto*/
+
+    position: relative;
+    /* Tornando o figure a referência para o posicionamento do figcapition */
+
+    transform: scale(0.95) rotate(2deg) translateY(20px);
+    filter: grayscale();
+    transition: 200ms;
+}
+
+figcaption {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.781);
+    color: white;
+
+    /* Tornando o elemento absoluto. Agora ele está "solto" podendo ser colocado em qualquer coordenada.  */
+
+    position: absolute;
+    /* Propriedades de coordenadas:display: top,bottom, left e right ; */
+
+
+    /* Para forçar o tamanho total */
+
+    /* Opção 1: use right/left */
+    right: 0;
+    left: 0;
+
+    /* Opção 2: largura de 100% */
+    width: 100%;
+
+    bottom: 20px;
+    padding-bottom: 10px;
+}
+
+/* Seletor DESCENDENTE */
+figure img {
+    border: solid 1px;
+}
+
+/* Seletor PSEUDO-CLASSE - começa com: 
+hover-> passar o mouse*/
+figure:hover {
+    filter: none;
+    transform: scale(1);
+}
+
+/* Também é um seletor DESCENDENTE */
+ol li {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+ul li {
+    list-style-type: square;
+    color: white;
+}
+
+ul li a {
+    color: white;
+    text-decoration: none;
+    text-shadow: black 1px 1px 4px;
+}
+
+/* pseudo elemento ::marker */
+ul li::marker {
+    content: "✔ ";
+
+    /* Pseudo-classe */
+}
+
+ul li:first-child {
+    /* primeiro "filho"  */
+    background-color: blue;
+}
+
+ul li:last-child {
+    /* último "filho"  */
+    background-color: darkorange;
+}
+
+ul li:nth-child(4) {
+    /*enésimo "filho"  */
+    background-color: blueviolet;
+}
+
+details {
+    position: relative;
+    margin: 20px 0;
+    padding: 15px;
+    border: 10px solid greenyellow;
+    background-color: black;
+    border-radius: 5px;
+}
+
+details summary {
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+details summary::marker {
+    content: "🤔";
+}
+
+details[open] summary::marker {
+    content: "💡";
+}
+
+/* Regras para o menu links */
+nav {
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    background-color: greenyellow;
+    color: black;
+    /* Usamos o inline-block para permitir definição de tamanho e ao memso tempo manter os elementos lado a lado. */
+    display: inline-block;
+    width: 33.33%;
+    padding: 10px;
+    transition: 1s;
+}
+
+nav a:hover,
+:focus {
+    background-color: darkmagenta;
+    transform: translateY(-10px);
+}
+
+.flutuar-imagem {
+    float: left;
+    margin-right: 12px;
+}
+
+p {
+    color: white
+}
+
+.imagem-movimento {
+    transition: transform 1s;
+}
+
+.imagem-movimento:hover {
+    transform: translatex(-10px) translateY(-10px);
+}
+
+.imagem-divertida img {
+    width: 200px;
+    height: 200px;
+    clip-path: circle(50%);
+    transition: clip-path 1ms;
+}
+
+.imagem-divertida img:hover {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+@keyframes cores {
+
+    /* De: */
+    from {
+        color: greenyellow;
+        transform: translateY(-500px);
+    }
+
+    /* Para: */
+    to {
+        color: white;
+        text-shadow: greenyellow 0 0 10px;
+
+    }
+
+}
+
+.animacao-cores {
+    /* Nome da animaçaão (obrigatória) */
+    animation-name: cores;
+
+    /* Atraso (espera um pouco antes de começar) */
+    animation-duration: 2s;
+
+    /* Quantidade de repetições */
+    animation-iteration-count: infinite;
+
+    /* Direção de animação */
+    animation-direction: alternate;
+
+    /* Função de aceleração/desaceleraçao */
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+    /* Forma abreviada */
+    /* animation:cores 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 5s infinite alternate; */
+}
+
+@keyframes animaSubtitulos {
+    0% {
+        color: greenyellow;
+    }
+
+    50% {
+        color: darkmagenta;
+        transform: translateX(250px);
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translateX(10px) scale(2);
+    }
+
+    100% {
+        transform: scale(1);
+        color: greenyellow;
+        text-shadow: white 0 0 10px;
+    }
+}
+
+.subtitulo-animado{
+    display: inline-block;
+    animation-name: animaSubtitulos;
+    animation-duration: 5s;
+}
+
+.bloco-animacao{
+    overflow: hidden;
+    width: 300px;
+    background-color: lightblue;
+    border: 2px solid white;
+    margin: auto;
+    position: relative;
+}
+
+.imagem-animada{
+    animation-name: rolarImagem;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+.desafio{
+    text-align: center;
+    font-size: 20px;
+    background-color: rgba(0, 0, 255, 0.623);
+    color:white;
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    animation-name: rolartexto;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    will-change: transform;
+}
+
+@keyframes rolarImagem{
+    from{transform: translateX(-100px) rotate(0);}
+    to{transform: translateX(500px);}
+}
+
+@keyframes rolartexto{
+    from{ 
+    transform: scale(1);
+    background-color: rgba(0, 0, 0, 0.719) ;
+
+
+    }
+    to{
+        transform: scale(1.5);
+        background-color: rgba(0, 0, 255, 0.514);
+    }
+}
+
